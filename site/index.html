@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="auto">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Умный планировщик продуктов — список покупок из реальных товаров</title>
+  <meta name="description" content="Приложение для Windows: опишите семью и бюджет — программа найдёт реальные товары в интернет-магазинах, проверит каждую страницу и соберёт список покупок и рецепты.">
+  <meta property="og:title" content="Умный планировщик продуктов">
+  <meta property="og:description" content="Закупки на неделю — за пару минут. Только реальные товары из магазинов, под ваш бюджет и вашу семью.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#1E7A56">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <script>
+    document.documentElement.classList.add('js');
+    try { var t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<a class="skip" href="#features">К содержимому</a>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="logo" href="#top" aria-label="Умный планировщик продуктов — на главную"><span class="logo-mark" aria-hidden="true"></span>Умный планировщик</a>
+    <nav class="links" id="links" aria-label="Разделы сайта">
+      <a href="#features">Возможности</a><a href="#how">Как это работает</a><a href="#download">Скачать</a><a href="#news">Новости</a><a href="#feedback">Контакты</a><a href="#faq">Вопросы</a>
+    </nav>
+    <div class="nav-act">
+      <button class="icon-btn" id="theme" type="button" aria-label="Сменить тему оформления">
+        <svg class="i-moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>
+      </button>
+      <a class="btn btn-primary btn-sm" href="#download">Скачать</a>
+      <button class="burger" id="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="links"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <!-- ───────── Герой ───────── -->
+  <section class="hero wrap">
+    <div class="hero-copy">
+      <p class="eyebrow reveal"><span class="dot"></span>Приложение для Windows</p>
+      <h1 class="split">Закупки на неделю — <em>за пару минут</em></h1>
+      <p class="lead reveal" style="--d:.25s">Опишите семью и бюджет. Программа найдёт реальные товары в интернет-магазинах, проверит каждую страницу и соберёт список покупок и рецепты.</p>
+      <div class="cta reveal" style="--d:.35s">
+        <a class="btn btn-primary btn-lg" href="#download">Скачать для Windows<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-ghost btn-lg" href="#how">Как это работает</a>
+      </div>
+      <ul class="facts reveal" style="--d:.45s"><li>Только реальные товары</li><li>Данные — на вашем компьютере</li><li>Рецепты из купленного</li></ul>
+    </div>
+
+    <div class="hero-demo reveal" style="--d:.2s" aria-hidden="true">
+      <div class="win">
+        <div class="win-bar"><i></i><i></i><i></i><span>План на 7 дней · пример</span></div>
+        <div class="win-body">
+          <div class="win-sum">
+            <div class="ring" id="ring"><b id="ringNum">0%</b></div>
+            <div>
+              <div class="sum-l">Итого в корзине</div>
+              <div class="sum-v"><span id="sumNum">0</span> ₽</div>
+              <div class="sum-s">из 5 000 ₽ · остаток <span id="leftNum">5 000</span> ₽</div>
+            </div>
+          </div>
+          <ul class="win-list" id="demoList">
+            <li><span class="th">🌾</span><span class="nm">Гречка ядрица, 800 г<small>× 3 шт.</small></span><b>357 ₽</b><i class="ck"></i></li>
+            <li><span class="th">🥛</span><span class="nm">Молоко 3,2%, 930 мл<small>× 5 шт.</small></span><b>445 ₽</b><i class="ck"></i></li>
+            <li><span class="th">🍗</span><span class="nm">Филе куриное, 1 кг<small>× 3 шт.</small></span><b>1 167 ₽</b><i class="ck"></i></li>
+            <li><span class="th">🥚</span><span class="nm">Яйца С1, 10 шт.<small>× 2 уп.</small></span><b>258 ₽</b><i class="ck"></i></li>
+            <li><span class="th">🥔</span><span class="nm">Картофель, 2 кг<small>× 2 шт.</small></span><b>238 ₽</b><i class="ck"></i></li>
+            <li class="more"><span class="nm">ещё 7 позиций</span><b>2 337 ₽</b></li>
+          </ul>
+          <div class="win-foot"><span class="ok-chip">✓ Страницы всех товаров проверены</span></div>
+        </div>
+        <div class="float f1">🛒 Найдено в магазине</div>
+        <div class="float f2">✓ Цена со страницы товара</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="marq-sec" aria-label="Поддерживаемые магазины">
+    <p class="marq-l">Ищет в магазинах</p>
+    <div class="marq"><div class="marq-track" id="marq"></div></div>
+  </section>
+
+  <!-- ───────── Возможности ───────── -->
+  <section class="sec wrap" id="features">
+    <div class="sec-h reveal"><p class="eyebrow">Возможности</p><h2>Всё для спокойных закупок</h2><p class="lead">Меньше времени на планирование, меньше лишних трат и никаких «такого товара нет в наличии».</p></div>
+    <div class="bento">
+      <article class="card spot c4 reveal">
+        <h3>Только реальные товары</h3>
+        <p>Программа находит каждый продукт на сайте магазина, открывает его страницу и берёт цену оттуда. Чего нет в магазине — в план не попадает.</p>
+        <ul class="vchips" id="vchips"><li>Гречка ядрица — страница открыта</li><li>Молоко 3,2% — цена подтверждена</li><li>Филе куриное — страница открыта</li></ul>
+      </article>
+      <article class="card spot c2 reveal" style="--d:.08s">
+        <h3>Под ваш бюджет</h3>
+        <p>ИИ выбирает из найденного и укладывается в сумму, которую вы задали.</p>
+        <div class="vbar"><div class="vbar-t"><span>4 802 ₽</span><span>из 5 000 ₽</span></div><div class="vbar-b"><i id="vbarFill"></i></div></div>
+      </article>
+      <article class="card spot c2 reveal">
+        <h3>Для всей семьи</h3>
+        <p>Рост, вес, активность и аллергии каждого — план учитывает всех.</p>
+        <div class="vfam"><span>А</span><span>М</span><span>Д</span><em>без орехов</em></div>
+      </article>
+      <article class="card spot c2 reveal" style="--d:.08s">
+        <h3>Рецепты из купленного</h3>
+        <p>Пошаговые рецепты из ваших продуктов — с видео и источником.</p>
+        <div class="vstep"><span>1</span><i></i><span>2</span><i></i><span>3</span></div>
+      </article>
+      <article class="card spot c2 reveal" style="--d:.16s">
+        <h3>Список в Telegram</h3>
+        <p>Отправьте покупки себе в чат одним нажатием и берите с собой.</p>
+        <div class="vmsg">🛒 План на 7 дней<br>Итого: 4 802 ₽</div>
+      </article>
+      <article class="card spot c6 wide reveal">
+        <div><h3>Ваши данные остаются у вас</h3><p>Планы, аккаунты и избранное хранятся на вашем компьютере. Ни рекламы, ни аналитики. Покупки вы совершаете на сайте магазина — приложение лишь готовит список.</p></div>
+        <ul class="vfacts"><li><b>0</b><span>рекламы и трекеров</span></li><li><b>100%</b><span>данных — на вашем ПК</span></li><li><b>1 клик</b><span>до сайта магазина</span></li></ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- ───────── Как это работает ───────── -->
+  <section class="sec wrap how" id="how">
+    <div class="how-l reveal"><p class="eyebrow">Как это работает</p><h2>От описания семьи до готового списка</h2><p class="lead">Мы не доверяем ИИ придумывать товары: он составляет только список потребностей, а реальные позиции программа находит сама.</p></div>
+    <ol class="steps" id="steps">
+      <li class="steps-line" aria-hidden="true"><i class="steps-fill" id="stepsFill"></i></li>
+      <li class="step"><span class="n">1</span><div><h3>Расскажите о себе</h3><p>Состав семьи, бюджет, число дней, предпочтения и то, что уже есть дома.</p></div></li>
+      <li class="step"><span class="n">2</span><div><h3>ИИ составляет потребности</h3><p>Не конкретные товары, а то, что нужно купить: «гречка», «филе куриное», «молоко».</p></div></li>
+      <li class="step"><span class="n">3</span><div><h3>Программа ищет в магазинах</h3><p>Каждый продукт ищется на сайтах магазинов. Из найденных реальных позиций выбирается лучшее под бюджет.</p></div></li>
+      <li class="step"><span class="n">4</span><div><h3>Страницы проверяются</h3><p>Открывается страница каждого товара, цена берётся оттуда. Готово: список по магазинам, рецепты и отправка в Telegram.</p></div></li>
+    </ol>
+  </section>
+
+  <!-- ───────── Скачать ───────── -->
+  <section class="wrap" id="download">
+    <div class="dl reveal">
+      <div class="dl-l">
+        <p class="eyebrow">Скачать</p>
+        <h2>Умный планировщик для Windows</h2>
+        <p class="lead" id="dlLead"></p>
+        <div class="dl-cta" id="dlCta"></div>
+        <dl class="dl-meta" id="dlMeta"></dl>
+      </div>
+      <div class="dl-r">
+        <h3>Установка</h3>
+        <ol class="inst">
+          <li><span>1</span><p>Скачайте установщик и запустите его.</p></li>
+          <li><span>2</span><p>Если Windows покажет «Windows защитил ваш компьютер» — нажмите <b>«Подробнее»</b>, затем <b>«Выполнить в любом случае»</b>. Приложение пока без цифровой подписи.</p></li>
+          <li><span>3</span><p>Примите условия использования, войдите гостем — и создайте первый план.</p></li>
+        </ol>
+        <div class="sha" id="shaBox" hidden><small>Контрольная сумма SHA-256 — чтобы убедиться, что файл не повреждён</small><div><code id="shaCode"></code><button type="button" id="shaCopy">Копировать</button></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────── Новости ───────── -->
+  <section class="sec wrap" id="news">
+    <div class="sec-h reveal"><p class="eyebrow">Новости</p><h2>Что нового</h2></div>
+    <div class="news" id="newsList"></div>
+    <div class="center"><button class="btn btn-ghost" id="newsMore" type="button" hidden>Показать ещё</button></div>
+  </section>
+
+  <!-- ───────── Контакты ───────── -->
+  <section class="sec wrap" id="feedback">
+    <div class="sec-h reveal"><p class="eyebrow">Обратная связь</p><h2>Нашли ошибку или есть идея?</h2><p class="lead">Напишите разработчику — читаем каждое сообщение.</p></div>
+    <div class="fb">
+      <div class="fb-l reveal">
+        <a class="contact" id="ctTg" href="#feedback"><span class="ct-i"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></span><span class="ct-t"><small>Telegram</small><b id="ctTgText">Скоро появится</b></span><svg class="ct-a" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+        <a class="contact" id="ctMail" href="#feedback"><span class="ct-i"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><span class="ct-t"><small>Почта</small><b id="ctMailText">Скоро появится</b></span><svg class="ct-a" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+        <p class="muted small">О проблеме в приложении лучше сообщить с текстом ошибки: нажмите <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd>, откройте вкладку Console и скопируйте красный текст.</p>
+      </div>
+      <form class="card form reveal" id="fbForm" novalidate style="--d:.1s">
+        <div class="field"><span class="f-l">О чём вы хотите написать</span>
+          <div class="seg" role="radiogroup"><label><input type="radio" name="kind" value="Идея" checked><span>Идея</span></label><label><input type="radio" name="kind" value="Ошибка"><span>Ошибка</span></label><label><input type="radio" name="kind" value="Вопрос"><span>Вопрос</span></label></div>
+        </div>
+        <label class="field"><span class="f-l">Сообщение</span><textarea name="msg" rows="5" placeholder="Расскажите, что случилось или что хотели бы улучшить" required></textarea></label>
+        <div class="row2">
+          <label class="field"><span class="f-l">Версия приложения <em>(необязательно)</em></span><input name="ver" type="text" maxlength="40" placeholder="например, 1.0.0"></label>
+          <label class="field"><span class="f-l">Как вам ответить <em>(необязательно)</em></span><input name="reply" type="text" maxlength="120" placeholder="Telegram или почта"></label>
+        </div>
+        <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <label class="agree"><input type="checkbox" name="agree"><span>Согласен(на) отправить это сообщение разработчику. <button type="button" class="link" data-legal="site">Как мы используем данные</button></span></label>
+        <p class="form-err" id="fbErr" hidden></p>
+        <p class="form-ok" id="fbOk" hidden></p>
+        <div class="fb-act"><button class="btn btn-primary" type="submit" id="fbSend">Отправить</button><button class="btn btn-ghost" type="button" id="fbTg">Написать в Telegram</button><button class="btn btn-quiet" type="button" id="fbMail">Почта</button><button class="btn btn-quiet" type="button" id="fbCopy">Скопировать</button></div>
+        <p class="muted small" id="fbNote">Сообщение придёт напрямую разработчику. Ответить мы сможем, только если вы оставите, как с вами связаться.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ───────── Вопросы ───────── -->
+  <section class="sec wrap faq-sec" id="faq">
+    <div class="sec-h reveal"><p class="eyebrow">Вопросы</p><h2>Частые вопросы</h2></div>
+    <div class="faq" id="faq-list">
+      <div class="qa reveal"><button type="button" aria-expanded="false"><span>Нужна ли регистрация?</span><i></i></button><div class="a"><div><p>Нет, можно войти гостем. Аккаунт нужен, если на одном компьютере вы хотите вести отдельные профили.</p></div></div></div>
+      <div class="qa reveal"><button type="button" aria-expanded="false"><span>Какие магазины поддерживаются?</span><i></i></button><div class="a"><div><p>Перекрёсток, Лента, Магнит, ВкусВилл, Самокат, Пятёрочка, Ашан, Дикси, Яндекс Лавка, Купер, Метро и Азбука Вкуса. Часть сайтов может быть закрыта для вашей страны или региона — программа определяет это сама и пропускает такие магазины.</p></div></div></div>
+      <div class="qa reveal"><button type="button" aria-expanded="false"><span>Почему цены могут отличаться от сайта?</span><i></i></button><div class="a"><div><p>Цена и наличие зависят от города и адреса, выбранных на сайте магазина. В настройках приложения один раз выберите тот же адрес, что и в вашем браузере, — и цены совпадут.</p></div></div></div>
+      <div class="qa reveal"><button type="button" aria-expanded="false"><span>Это медицинская рекомендация?</span><i></i></button><div class="a"><div><p>Нет. Планы питания и рецепты носят справочный характер. При заболеваниях, аллергиях и для питания детей проконсультируйтесь с врачом, а состав товара всегда проверяйте на странице магазина.</p></div></div></div>
+      <div class="qa reveal"><button type="button" aria-expanded="false"><span>Где хранятся мои данные?</span><i></i></button><div class="a"><div><p>На вашем компьютере. Для расчёта плана нужные данные (возраст, рост, вес, аллергии, бюджет) передаются ИИ-сервису. Подробнее — в Политике конфиденциальности.</p></div></div></div>
+      <div class="qa reveal"><button type="button" aria-expanded="false"><span>Можно ли купить прямо в приложении?</span><i></i></button><div class="a"><div><p>Нет. Приложение не продаёт товары и не оформляет заказы: оно готовит список, а ссылки ведут на страницы товаров в магазинах.</p></div></div></div>
+      <div class="qa reveal"><button type="button" aria-expanded="false"><span>На каких системах работает?</span><i></i></button><div class="a"><div><p>На Windows 10 и 11 (64 бит). Для расчёта плана нужен интернет.</p></div></div></div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div class="foot-l"><a class="logo" href="#top"><span class="logo-mark" aria-hidden="true"></span>Умный планировщик</a><p>Закупки на неделю — за пару минут.</p></div>
+    <nav class="foot-links" aria-label="Документы и разделы"><a href="#download">Скачать</a><a href="#feedback">Контакты</a><button type="button" data-legal="terms">Пользовательское соглашение</button><button type="button" data-legal="privacy">Политика конфиденциальности</button></nav>
+  </div>
+  <div class="wrap foot-note"><p>Названия магазинов принадлежат их владельцам. Приложение не связано с магазинами и не является их официальным партнёром. Планы питания не заменяют консультацию врача.</p><p>© <span id="year">2026</span> Умный планировщик продуктов</p></div>
+</footer>
+
+<dialog class="legal-dlg" id="legalDlg" aria-labelledby="legalTitle">
+  <div class="dlg-h"><h3 id="legalTitle"></h3><button type="button" class="icon-btn" id="legalClose" aria-label="Закрыть"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+  <div class="dlg-tabs" role="tablist"><button type="button" data-tab="terms">Соглашение</button><button type="button" data-tab="privacy">Конфиденциальность</button><button type="button" data-tab="site">Этот сайт</button></div>
+  <div class="dlg-b legal" id="legalBody"></div>
+</dialog>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="config.js"></script>
+<script src="assets/legal-data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
